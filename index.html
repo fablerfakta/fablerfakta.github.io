@@ -19,91 +19,19 @@
 </head>
 <body>
 
-  <nav class="topnav" aria-label="Huvudmeny">
-    <a class="brand" href="#top">Fabler &amp; Fakta</a>
-    <div class="links">
-      <a href="#appar">Appar</a>
-      <a href="#illustration">Illustration</a>
-      <a href="#om">Om</a>
-      <a href="#kontakt">Kontakt</a>
-    </div>
-  </nav>
-
   <header id="top" class="hero">
     <picture>
       <source media="(max-aspect-ratio: 3/4)" srcset="assets/img/hero-mobil-720.jpg 720w, assets/img/hero-mobil-1080.jpg 1080w" sizes="100vw">
       <img src="assets/img/hero-1920.jpg" srcset="assets/img/hero-1280.jpg 1280w, assets/img/hero-1920.jpg 1920w" sizes="100vw"
            alt="Fabler &amp; Fakta Studio – en uppslagen bok, en fjäderpenna och en glödlampa under en stjärnhimmel">
     </picture>
-    <a class="scroll" href="#appar" aria-label="Till innehållet"><span></span></a>
   </header>
 
-  <main>
-
-    <section id="appar" class="section">
-      <p class="eyebrow">Appar</p>
-      <h2>Små verktyg med stora idéer</h2>
-      <p class="lead">Appar som är roliga, nyttiga – eller både och.</p>
-
-      <div class="cards">
-        <article class="card">
-          <div class="mono" aria-hidden="true">B</div>
-          <h3>Bad Line</h3>
-          <p>En soundboard för samtal du inte vill ha. Spela upp brus, avbrott och dålig täckning – och smit snyggt ur samtalet.</p>
-          <a class="btn" href="https://cajsag73.github.io/" rel="noopener">Öppna appen</a>
-        </article>
-
-        <article class="card">
-          <div class="mono" aria-hidden="true">S</div>
-          <h3>SynTrace</h3>
-          <p>Ett test för synestesi – utforska hur bokstäver, siffror och färger hänger ihop för just dig.</p>
-          <a class="btn" href="https://syntraceapp.github.io/SynTrace/app/" rel="noopener">Öppna appen</a>
-          <span class="tag">Testas på Google Play</span>
-        </article>
-
-        <article class="card card--soon">
-          <div class="mono" aria-hidden="true">+</div>
-          <h3>Fler på väg</h3>
-          <p>Nya appar är under arbete. Håll utkik!</p>
-          <span class="tag">Kommer snart</span>
-        </article>
-      </div>
-    </section>
-
-    <section id="illustration" class="section section--alt">
-      <p class="eyebrow">Illustration &amp; animation</p>
-      <h2>Bilder som berättar</h2>
-      <p class="lead">Illustration och animation för böcker, appar, spel och allt däremellan. Galleriet fylls på inom kort.</p>
-      <div class="gallery" aria-label="Galleri (kommer snart)">
-        <div class="ph"></div><div class="ph"></div><div class="ph"></div>
-      </div>
-    </section>
-
-    <section id="om" class="section">
-      <p class="eyebrow">Om studion</p>
-      <h2>Där fabler möter fakta</h2>
-      <p class="lead narrow">Fabler &amp; Fakta Studio är en liten oberoende studio som gör appar, illustration och animation.
-        Allt utgår från samma idé: att det som är bra att veta också kan vara roligt att upptäcka.</p>
-    </section>
-
-    <section id="kontakt" class="section section--alt">
-      <p class="eyebrow">Kontakt</p>
-      <h2>Säg hej</h2>
-      <p class="lead">Frågor, idéer eller samarbete? Hör av dig.</p>
-      <a class="btn" href="https://github.com/fablerfakta" rel="noopener">Studion på GitHub</a>
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    <p>© 2026 Fabler &amp; Fakta Studio. Alla rättigheter förbehållna.</p>
-  </footer>
-
-  <script>
-    // Visa en fast meny när man scrollat förbi bilden
-    const nav = document.querySelector('.topnav');
-    const hero = document.querySelector('.hero');
-    new IntersectionObserver(([e]) => nav.classList.toggle('solid', !e.isIntersecting), {threshold: 0.08}).observe(hero);
-  </script>
+  <nav class="bottomnav" aria-label="Meny">
+    <a href="#">Appar</a>
+    <a href="#">Illustration</a>
+    <a href="#">Om</a>
+    <a href="#">Kontakt</a>
+  </nav>
 </body>
 </html>
