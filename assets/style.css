@@ -1,0 +1,147 @@
+@font-face { font-family: "Poppins"; font-weight: 300; font-display: swap; src: url("fonts/poppins-light.woff") format("woff"); }
+@font-face { font-family: "Poppins"; font-weight: 400; font-display: swap; src: url("fonts/poppins-regular.woff") format("woff"); }
+@font-face { font-family: "Poppins"; font-weight: 500; font-display: swap; src: url("fonts/poppins-medium.woff") format("woff"); }
+
+:root {
+  --night: #13102a;
+  --night-2: #1b1734;
+  --card: #221d3f;
+  --line: rgba(214, 186, 128, 0.18);
+  --gold: #d6b980;
+  --gold-hi: #f0d9a4;
+  --gold-lo: #9c7a4a;
+  --text: #e9e4f5;
+  --muted: #a9a2c4;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--text);
+  font-family: "Poppins", system-ui, sans-serif;
+  font-weight: 300;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--gold); }
+
+/* ---------- top menu ---------- */
+.topnav {
+  position: fixed; inset: 0 0 auto 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px clamp(16px, 4vw, 48px);
+  transition: background .35s, box-shadow .35s, transform .35s;
+  transform: translateY(-100%);
+}
+.topnav.solid {
+  transform: none;
+  background: rgba(19, 16, 42, .88);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 var(--line);
+}
+.brand { font-weight: 500; letter-spacing: .04em; text-decoration: none; color: var(--gold-hi); }
+.links { display: flex; gap: clamp(14px, 3vw, 32px); }
+.links a {
+  text-decoration: none; color: var(--muted); font-size: .9rem;
+  letter-spacing: .12em; text-transform: uppercase;
+}
+.links a:hover { color: var(--gold-hi); }
+@media (max-width: 560px) { .brand { display: none; } .topnav { justify-content: center; } }
+
+/* ---------- hero ---------- */
+.hero { position: relative; height: 100vh; height: 100svh; overflow: hidden; background: var(--night); }
+.hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
+@media (max-aspect-ratio: 3/4) {
+  /* phones: show the whole portrait image, never crop the logo */
+  .hero { height: auto; }
+  .hero img { height: auto; }
+}
+.hero::after {
+  content: ""; position: absolute; inset: auto 0 0 0; height: 18%;
+  background: linear-gradient(to bottom, transparent, var(--night));
+  pointer-events: none;
+}
+.scroll {
+  position: absolute; left: 50%; bottom: 28px; z-index: 2; transform: translateX(-50%);
+  width: 28px; height: 46px; border: 1.5px solid var(--gold); border-radius: 16px; opacity: .75;
+}
+.scroll span {
+  position: absolute; left: 50%; top: 9px; width: 4px; height: 8px; margin-left: -2px;
+  border-radius: 2px; background: var(--gold); animation: drop 1.8s infinite;
+}
+@keyframes drop { 0% { transform: translateY(0); opacity: 1; } 80% { transform: translateY(16px); opacity: 0; } 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .scroll span { animation: none; } html { scroll-behavior: auto; } }
+
+/* ---------- sections ---------- */
+.section {
+  padding: clamp(64px, 10vw, 120px) clamp(20px, 6vw, 80px);
+  text-align: center;
+}
+.section--alt { background: var(--night-2); }
+.eyebrow {
+  margin: 0 0 10px; color: var(--gold); font-weight: 500; font-size: .8rem;
+  letter-spacing: .3em; text-transform: uppercase;
+}
+h2 {
+  margin: 0 0 14px; font-weight: 500; font-size: clamp(1.7rem, 4vw, 2.6rem); line-height: 1.2;
+  background: linear-gradient(90deg, var(--gold-lo), var(--gold-hi) 50%, var(--gold-lo));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.lead { max-width: 640px; margin: 0 auto 40px; color: var(--muted); font-size: 1.05rem; }
+.lead.narrow { max-width: 680px; margin-bottom: 0; }
+
+/* ---------- app cards ---------- */
+.cards {
+  display: grid; gap: 24px; max-width: 1100px; margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.card {
+  position: relative; text-align: left;
+  background: linear-gradient(160deg, var(--card), #191533);
+  border: 1px solid var(--line); border-radius: 18px;
+  padding: 28px 26px 30px;
+  display: flex; flex-direction: column; gap: 10px;
+  transition: transform .25s, border-color .25s, box-shadow .25s;
+}
+.card:hover { transform: translateY(-4px); border-color: rgba(214,186,128,.45); box-shadow: 0 18px 40px -18px rgba(240,190,110,.25); }
+.card h3 { margin: 6px 0 0; font-weight: 500; font-size: 1.25rem; color: var(--text); }
+.card p { margin: 0 0 8px; color: var(--muted); flex: 1; }
+.mono {
+  width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center;
+  font-weight: 500; font-size: 1.3rem; color: #241a0c;
+  background: radial-gradient(circle at 35% 30%, var(--gold-hi), var(--gold) 55%, var(--gold-lo));
+}
+.card--soon { border-style: dashed; background: transparent; }
+.card--soon .mono { background: transparent; border: 1px dashed var(--gold); color: var(--gold); }
+.tag {
+  align-self: flex-start; font-size: .75rem; letter-spacing: .08em; color: var(--gold);
+  border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px;
+}
+
+.btn {
+  align-self: flex-start; display: inline-block; text-decoration: none;
+  padding: 10px 22px; border-radius: 999px; font-weight: 500; font-size: .95rem;
+  color: #241a0c; background: linear-gradient(180deg, var(--gold-hi), var(--gold));
+  box-shadow: 0 6px 18px -8px rgba(240,200,120,.6);
+  transition: filter .2s, transform .2s;
+}
+.btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.section > .btn { align-self: center; }
+
+/* ---------- gallery placeholders ---------- */
+.gallery {
+  display: grid; gap: 16px; max-width: 1000px; margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.ph {
+  aspect-ratio: 4/3; border-radius: 14px; border: 1px dashed var(--line);
+  background:
+    radial-gradient(circle at 50% 45%, rgba(240,200,120,.10), transparent 60%),
+    linear-gradient(160deg, #201b3c, #17132e);
+}
+
+/* ---------- footer ---------- */
+.footer { padding: 32px 20px 40px; text-align: center; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); }
+.footer p { margin: 0; }
