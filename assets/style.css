@@ -84,8 +84,8 @@ html, body { height: 100%; }
 .spark.dot {
   clip-path: none; border-radius: 50%;
   width: 4.4% !important;
-  background: radial-gradient(circle, #fffbd0 0 9%, #fff04a 20%, rgba(255,214,0,.55) 40%, rgba(255,190,0,0) 70%);
-  filter: blur(.5px) drop-shadow(0 0 3px rgba(255,220,40,.9));
+  background: radial-gradient(circle, #fff8e6 0 9%, #f3dc9c 22%, rgba(226,190,120,.5) 42%, rgba(210,170,100,0) 70%);
+  filter: blur(.5px) drop-shadow(0 0 3px rgba(230,195,125,.75));
 }
 @keyframes wisp {
   0%   { transform: translate(-50%, -50%) scale(.3); opacity: 0; }
