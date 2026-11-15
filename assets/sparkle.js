@@ -36,7 +36,7 @@
   }
 
   (function tick() {
-    if (host.childElementCount < 8) spawn();
-    setTimeout(tick, 220 + Math.random() * 420);
+    if (host.childElementCount < 4) spawn();
+    setTimeout(tick, 700 + Math.random() * 1100);
   })();
 })();
