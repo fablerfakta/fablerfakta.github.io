@@ -30,7 +30,7 @@
     x += (tx - x) * 0.06; y += (ty - y) * 0.06;
     tilt.style.transform = 'translate3d(' + x.toFixed(2) + 'px,' + y.toFixed(2) + 'px,0)';
     if (front) front.style.transform = 'translate3d(' + (x * 0.6).toFixed(2) + 'px,' + (y * 0.6).toFixed(2) + 'px,0)';
-    bg.style.transform = 'translate3d(' + (-x * 0.25).toFixed(2) + 'px,' + (-y * 0.25).toFixed(2) + 'px,0) scale(1.03)';
+    // himlen, jorden och texten står still
     requestAnimationFrame(loop);
   }
 

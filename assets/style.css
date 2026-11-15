@@ -68,6 +68,7 @@ html, body { height: 100%; }
   }
   .tilt { will-change: transform; position: relative; }
   .layer-logo { display: block; width: 100%; height: auto; }
+  .layer-text { position: absolute; left: 0; top: 0; width: 100%; height: auto; display: block; pointer-events: none; }
   .layer-front { position: absolute; left: 0; top: 0; width: 100%; height: auto; display: block; will-change: transform; }
 }
 
