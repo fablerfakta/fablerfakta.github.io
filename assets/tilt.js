@@ -5,7 +5,7 @@
   var bg = document.querySelector('.layer-bg');
   if (!tilt || !bg) return;
 
-  var MAX = 10;          // max förflyttning för logon i px
+  var MAX = 5;           // max förflyttning för logon i px
   var tx = 0, ty = 0;    // mål
   var x = 0, y = 0;      // nuvarande
   var base = null;       // hur telefonen hölls när sidan öppnades
