@@ -27,41 +27,26 @@ body {
 }
 a { color: var(--gold); }
 
-/* ---------- bottom menu ---------- */
+/* ---------- bottom menu (on top of the image) ---------- */
 .bottomnav {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
   display: flex; justify-content: center; flex-wrap: wrap;
-  gap: clamp(20px, 5vw, 56px);
-  padding: 28px 16px 36px;
-  background: var(--night);
-  border-top: 1px solid rgba(255,255,255,.08);
+  gap: clamp(16px, 5vw, 56px);
+  padding: 22px 12px calc(22px + env(safe-area-inset-bottom));
+  background: linear-gradient(to bottom, transparent, rgba(19,16,42,.85) 55%);
 }
 .bottomnav a {
   text-decoration: none; color: var(--muted);
-  font-size: clamp(.95rem, 2.4vw, 1.15rem); letter-spacing: .14em; text-transform: uppercase;
+  font-size: clamp(.85rem, 2.4vw, 1.15rem); letter-spacing: .14em; text-transform: uppercase;
 }
 .bottomnav a:hover { color: var(--gold-hi); }
 
 /* ---------- hero ---------- */
-.hero { position: relative; height: calc(100vh - 90px); height: calc(100svh - 90px); overflow: hidden; background: var(--night); }
-.hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; display: block; }
+html, body { height: 100%; }
+.hero { position: relative; height: 100vh; height: 100dvh; overflow: hidden; background: var(--night); }
+.hero picture, .hero img { display: block; width: 100%; height: 100%; }
+.hero img { object-fit: cover; object-position: center 40%; }
 @media (max-aspect-ratio: 3/4) {
-  /* phones: show the whole portrait image, never crop the logo */
-  .hero { height: auto; }
-  .hero img { height: auto; }
+  /* phones: keep the globe and logo in view, crop only stars at the bottom */
+  .hero img { object-position: center top; }
 }
-.hero::after {
-  content: ""; position: absolute; inset: auto 0 0 0; height: 18%;
-  background: linear-gradient(to bottom, transparent, var(--night));
-  pointer-events: none;
-}
-.scroll {
-  position: absolute; left: 50%; bottom: 28px; z-index: 2; transform: translateX(-50%);
-  width: 28px; height: 46px; border: 1.5px solid var(--gold); border-radius: 16px; opacity: .75;
-}
-.scroll span {
-  position: absolute; left: 50%; top: 9px; width: 4px; height: 8px; margin-left: -2px;
-  border-radius: 2px; background: var(--gold); animation: drop 1.8s infinite;
-}
-@keyframes drop { 0% { transform: translateY(0); opacity: 1; } 80% { transform: translateY(16px); opacity: 0; } 100% { opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .scroll span { animation: none; } html { scroll-behavior: auto; } }
-
