@@ -66,6 +66,25 @@ html, body { height: 100%; }
   .float {
     position: absolute; left: 5.556%; top: 0.625%; width: 89.07%;
   }
-  .tilt { will-change: transform; }
+  .tilt { will-change: transform; position: relative; }
   .layer-logo { display: block; width: 100%; height: auto; }
+}
+
+/* ---------- magiska glimtar runt boken ---------- */
+.sparkles { position: absolute; inset: 0; pointer-events: none; }
+.spark {
+  position: absolute; display: block; aspect-ratio: 1; transform: translate(-50%, -50%) scale(0);
+  background: radial-gradient(circle, #fffaf0 0 12%, rgba(255,226,160,.95) 22%, rgba(240,190,100,0) 60%);
+  clip-path: polygon(50% 0, 58% 42%, 100% 50%, 58% 58%, 50% 100%, 42% 58%, 0 50%, 42% 42%);
+  filter: drop-shadow(0 0 3px rgba(255,210,130,.9));
+  animation: twinkle 1.8s ease-in-out forwards;
+}
+.spark.dot {
+  clip-path: none; border-radius: 50%;
+  background: radial-gradient(circle, #fff6e0 0 18%, rgba(255,215,140,.7) 35%, rgba(255,200,120,0) 70%);
+}
+@keyframes twinkle {
+  0%   { transform: translate(-50%, -50%) scale(0) rotate(var(--rot)); opacity: 0; }
+  40%  { transform: translate(-50%, -50%) scale(1) rotate(calc(var(--rot) + 20deg)); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(0) rotate(calc(var(--rot) + 45deg)); opacity: 0; }
 }
