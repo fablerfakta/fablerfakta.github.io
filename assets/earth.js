@@ -5,7 +5,7 @@
   var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var N = 420;                       // intern upplösning (skalas upp med CSS)
-  var REV_SECONDS = 240;             // ett varv på fyra minuter
+  var REV_SECONDS = 150;             // ett varv på två och en halv minut
   cv.width = N; cv.height = N;
   var ctx = cv.getContext('2d');
   var out = ctx.createImageData(N, N);
@@ -38,10 +38,11 @@
       }
     }
     var d = out.data;
+    var START = Date.now() / 1000 % REV_SECONDS;   // läses bara en gång
 
     function draw() {
-      // tiden räknas från klockan, så rotationen fortsätter jämnt hela tiden
-      var off = (Date.now() / 1000 / REV_SECONDS % 1) * TW;
+      // monoton klocka (kan aldrig gå bakåt) + startläge som beror på tiden på dygnet
+      var off = ((START + performance.now() / 1000) / REV_SECONDS % 1) * TW;
       for (var i = 0; i < count; i++) {
         var uf = lonA[i] + off, u0 = Math.floor(uf), f = uf - u0;
         u0 %= TW; var u1 = (u0 + 1) % TW;
@@ -57,5 +58,5 @@
     draw();
     if (!still) setInterval(draw, 60);   // ca 16 bilder/s, oberoende av andra animationer
   };
-  img.src = 'assets/img/jord.png?v=3';
+  img.src = 'assets/img/jord.png?v=4';
 })();

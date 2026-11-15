@@ -10,8 +10,15 @@
   var x = 0, y = 0;      // nuvarande
   var base = null;       // hur telefonen hölls när sidan öppnades
 
+  var lastG = null, lastB = null;
   function onOrient(e) {
     if (e.beta == null || e.gamma == null) return;
+    // när mobilen hålls nästan lodrätt kan sensorn plötsligt slå om (t.ex. +80 -> -80).
+    // sådana hopp ignoreras så att bilden inte rycker.
+    if (lastG !== null && (Math.abs(e.gamma - lastG) > 35 || Math.abs(e.beta - lastB) > 35)) {
+      lastG = e.gamma; lastB = e.beta; return;
+    }
+    lastG = e.gamma; lastB = e.beta;
     if (!base) base = { b: e.beta, g: e.gamma };
     var g = Math.max(-25, Math.min(25, e.gamma - base.g)) / 25;
     var b = Math.max(-25, Math.min(25, e.beta - base.b)) / 25;
@@ -19,7 +26,7 @@
   }
 
   function loop() {
-    x += (tx - x) * 0.08; y += (ty - y) * 0.08;
+    x += (tx - x) * 0.06; y += (ty - y) * 0.06;
     tilt.style.transform = 'translate3d(' + x.toFixed(2) + 'px,' + y.toFixed(2) + 'px,0)';
     bg.style.transform = 'translate3d(' + (-x * 0.25).toFixed(2) + 'px,' + (-y * 0.25).toFixed(2) + 'px,0) scale(1.03)';
     requestAnimationFrame(loop);
