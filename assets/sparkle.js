@@ -25,7 +25,7 @@
     var z = pick();
     var s = document.createElement('span');
     s.className = 'spark' + (Math.random() < 0.25 ? ' dot' : '');
-    var size = 3.5 + Math.random() * 4.5;            // % av logobredden
+    var size = 2.2 + Math.random() * 2.8;            // % av logobredden
     s.style.left = (z[0] + Math.random() * z[2]) + '%';
     s.style.top = (z[1] + Math.random() * z[3]) + '%';
     s.style.width = size + '%';
