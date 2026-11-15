@@ -24,19 +24,19 @@
     if (document.hidden) return;
     var z = pick();
     var s = document.createElement('span');
-    s.className = 'spark' + (Math.random() < 0.35 ? ' dot' : '');
-    var size = 2.2 + Math.random() * 2.6;            // % av logobredden
+    s.className = 'spark' + (Math.random() < 0.25 ? ' dot' : '');
+    var size = 3.5 + Math.random() * 4.5;            // % av logobredden
     s.style.left = (z[0] + Math.random() * z[2]) + '%';
     s.style.top = (z[1] + Math.random() * z[3]) + '%';
     s.style.width = size + '%';
-    s.style.animationDuration = (1.2 + Math.random() * 1.4) + 's';
+    s.style.animationDuration = (1.6 + Math.random() * 1.6) + 's';
     s.style.setProperty('--rot', (Math.random() * 40 - 20) + 'deg');
     s.addEventListener('animationend', function () { s.remove(); });
     host.appendChild(s);
   }
 
   (function tick() {
-    if (host.childElementCount < 7) spawn();
+    if (host.childElementCount < 8) spawn();
     setTimeout(tick, 220 + Math.random() * 420);
   })();
 })();

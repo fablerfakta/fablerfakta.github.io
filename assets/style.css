@@ -74,14 +74,15 @@ html, body { height: 100%; }
 .sparkles { position: absolute; inset: 0; pointer-events: none; }
 .spark {
   position: absolute; display: block; aspect-ratio: 1; transform: translate(-50%, -50%) scale(0);
-  background: radial-gradient(circle, #fffaf0 0 12%, rgba(255,226,160,.95) 22%, rgba(240,190,100,0) 60%);
-  clip-path: polygon(50% 0, 58% 42%, 100% 50%, 58% 58%, 50% 100%, 42% 58%, 0 50%, 42% 42%);
-  filter: drop-shadow(0 0 3px rgba(255,210,130,.9));
+  background: radial-gradient(circle, #ffffff 0 18%, #ffe9b8 30%, rgba(255,205,120,.85) 48%, rgba(240,190,100,0) 72%);
+  clip-path: polygon(50% 0, 56% 44%, 100% 50%, 56% 56%, 50% 100%, 44% 56%, 0 50%, 44% 44%);
+  filter: drop-shadow(0 0 4px rgba(255,215,140,1)) drop-shadow(0 0 8px rgba(255,190,100,.7));
   animation: twinkle 1.8s ease-in-out forwards;
 }
 .spark.dot {
   clip-path: none; border-radius: 50%;
-  background: radial-gradient(circle, #fff6e0 0 18%, rgba(255,215,140,.7) 35%, rgba(255,200,120,0) 70%);
+  background: radial-gradient(circle, #ffffff 0 14%, rgba(255,225,160,.9) 30%, rgba(255,200,120,0) 70%);
+  width: 2% !important;
 }
 @keyframes twinkle {
   0%   { transform: translate(-50%, -50%) scale(0) rotate(var(--rot)); opacity: 0; }
