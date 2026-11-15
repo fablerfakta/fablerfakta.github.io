@@ -50,3 +50,23 @@ html, body { height: 100%; }
   /* phones: keep the globe and logo in view, crop only stars at the bottom */
   .hero img { object-position: center top; }
 }
+
+/* ---------- phones: floating logo in front of the globe ---------- */
+.stage { display: none; }
+@media (max-aspect-ratio: 3/4) {
+  .hero > picture { display: none; }
+  .stage {
+    display: block; position: absolute; top: 0; left: 50%;
+    width: max(100vw, calc(100dvh * 0.5625)); aspect-ratio: 1080 / 1920;
+    transform: translateX(-50%);
+  }
+  .layer-bg { position: absolute; inset: 0; width: 100%; height: 100%; will-change: transform; }
+  .float {
+    position: absolute; left: 5.556%; top: 0.625%; width: 89.07%;
+    animation: bob 6s ease-in-out infinite;
+  }
+  .tilt { will-change: transform; }
+  .layer-logo { display: block; width: 100%; height: auto; }
+}
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-1.6%); } }
+@media (prefers-reduced-motion: reduce) { .float { animation: none; } }
