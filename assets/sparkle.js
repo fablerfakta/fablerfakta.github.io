@@ -22,10 +22,11 @@
     // längs glödlampans runda glas
     [2, function () {
       var a = Math.PI * (0.95 + Math.random() * 1.1);   // övre halvan av rundningen
-      var r = 1.02 + Math.random() * 0.12;
+      var r = 0.84 + Math.random() * 0.14;      // precis innanför glasets kant
       return [59 + Math.cos(a) * 9.5 * r, 43.5 + Math.sin(a) * 11.5 * r];
     }]
   ];
+  places.push([1, function () { return along(78.8, 48.6, 68.6, 62, 1.5); }]);   // pennan
   var total = places.reduce(function (s, p) { return s + p[0]; }, 0);
   function pick() {
     var r = Math.random() * total;
@@ -33,12 +34,34 @@
     return places[0][1]();
   }
 
+  // läs logons genomskinlighet, så att glimtar bara hamnar på själva föremålen
+  var alpha = null, AW = 0, AH = 0;
+  (function () {
+    var src = document.querySelector('.layer-logo');
+    var im = new Image();
+    im.onload = function () {
+      AW = 240; AH = Math.round(240 * im.height / im.width);
+      var c = document.createElement('canvas'); c.width = AW; c.height = AH;
+      var x = c.getContext('2d'); x.drawImage(im, 0, 0, AW, AH);
+      try { alpha = x.getImageData(0, 0, AW, AH).data; } catch (e) { alpha = null; }
+    };
+    im.src = src.currentSrc || src.src;
+  })();
+  function onObject(p) {
+    if (!alpha) return true;
+    var X = Math.round(p[0] / 100 * (AW - 1)), Y = Math.round(p[1] / 100 * (AH - 1));
+    if (X < 0 || Y < 0 || X >= AW || Y >= AH) return false;
+    return alpha[(Y * AW + X) * 4 + 3] > 235;
+  }
+
   function spawn() {
     if (document.hidden) return;
-    var pos = pick();
+    var pos = pick(), tries = 0;
+    while (!onObject(pos) && tries++ < 20) pos = pick();
+    if (!onObject(pos)) return;
     var s = document.createElement('span');
     s.className = 'spark' + (Math.random() < 0.25 ? ' dot' : '');
-    var size = 2.2 + Math.random() * 2.8;            // % av logobredden
+    var size = 1.8 + Math.random() * 2.4;            // % av logobredden
     s.style.left = pos[0] + '%';
     s.style.top = pos[1] + '%';
     s.style.width = size + '%';
