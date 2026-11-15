@@ -15,7 +15,7 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" as="image" href="assets/img/hero-mobil-720.jpg" media="(max-aspect-ratio: 3/4)">
   <link rel="preload" as="image" href="assets/img/hero-1920.jpg?v=3" media="(min-aspect-ratio: 3/4)">
-  <link rel="stylesheet" href="assets/style.css?v=5">
+  <link rel="stylesheet" href="assets/style.css?v=6">
 </head>
 <body>
 
@@ -26,7 +26,10 @@
            alt="Fabler &amp; Fakta Studio – en uppslagen bok, en fjäderpenna och en glödlampa under en stjärnhimmel">
     </picture>
     <div class="stage" aria-hidden="true">
-      <img class="layer-bg" src="assets/img/mobil-bg.jpg" alt="">
+      <div class="layer-bg">
+        <img class="sky" src="assets/img/mobil-sky.jpg" alt="">
+        <canvas class="layer-earth"></canvas>
+      </div>
       <div class="float"><div class="tilt">
         <picture>
           <source type="image/webp" srcset="assets/img/mobil-logo.webp?v=3">
@@ -42,6 +45,7 @@
     </nav>
   </header>
 
-  <script src="assets/tilt.js?v=4" defer></script>
+  <script src="assets/tilt.js?v=5" defer></script>
+  <script src="assets/earth.js?v=1" defer></script>
 </body>
 </html>
