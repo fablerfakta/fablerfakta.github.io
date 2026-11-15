@@ -60,7 +60,7 @@ html, body { height: 100%; }
     width: max(100vw, calc(100dvh * 0.5625)); aspect-ratio: 1080 / 1920;
     transform: translateX(-50%);
   }
-  .layer-bg { position: absolute; inset: 0; will-change: transform; }
+  .layer-bg { position: absolute; inset: 0; }
   .layer-bg .sky { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   .layer-earth { position: absolute; left: -3.241%; top: 1.823%; width: 106.481%; aspect-ratio: 1; display: block; }
   .float {

@@ -39,22 +39,23 @@
     }
     var d = out.data;
 
-    function draw(t) {
-      var off = (t / 1000 / REV_SECONDS % 1) * TW;
+    function draw() {
+      // tiden räknas från klockan, så rotationen fortsätter jämnt hela tiden
+      var off = (Date.now() / 1000 / REV_SECONDS % 1) * TW;
       for (var i = 0; i < count; i++) {
-        var u = (lonA[i] + off) | 0; u %= TW;
-        var p = (rowA[i] + u) * 4, o = idx[i], l = litA[i];
-        d[o] = tex[p] * l; d[o + 1] = tex[p + 1] * l; d[o + 2] = tex[p + 2] * l; d[o + 3] = alA[i];
+        var uf = lonA[i] + off, u0 = Math.floor(uf), f = uf - u0;
+        u0 %= TW; var u1 = (u0 + 1) % TW;
+        var p0 = (rowA[i] + u0) * 4, p1 = (rowA[i] + u1) * 4, o = idx[i], l = litA[i];
+        d[o]     = (tex[p0]     + (tex[p1]     - tex[p0])     * f) * l;
+        d[o + 1] = (tex[p0 + 1] + (tex[p1 + 1] - tex[p0 + 1]) * f) * l;
+        d[o + 2] = (tex[p0 + 2] + (tex[p1 + 2] - tex[p0 + 2]) * f) * l;
+        d[o + 3] = alA[i];
       }
       ctx.putImageData(out, 0, 0);
     }
 
-    if (still) { draw(0); return; }
-    var last = 0;
-    (function loop(t) {
-      if (t - last > 100) { draw(t); last = t; }   // 10 bilder/s räcker för så långsam rörelse
-      requestAnimationFrame(loop);
-    })(0);
+    draw();
+    if (!still) setInterval(draw, 60);   // ca 16 bilder/s, oberoende av andra animationer
   };
-  img.src = 'assets/img/jord.png?v=2';
+  img.src = 'assets/img/jord.png?v=3';
 })();
