@@ -3,6 +3,7 @@
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var tilt = document.querySelector('.tilt');
   var bg = document.querySelector('.layer-bg');
+  var front = document.querySelector('.layer-front');
   if (!tilt || !bg) return;
 
   var MAX = 5;           // max förflyttning för logon i px
@@ -28,6 +29,7 @@
   function loop() {
     x += (tx - x) * 0.06; y += (ty - y) * 0.06;
     tilt.style.transform = 'translate3d(' + x.toFixed(2) + 'px,' + y.toFixed(2) + 'px,0)';
+    if (front) front.style.transform = 'translate3d(' + (x * 0.6).toFixed(2) + 'px,' + (y * 0.6).toFixed(2) + 'px,0)';
     bg.style.transform = 'translate3d(' + (-x * 0.25).toFixed(2) + 'px,' + (-y * 0.25).toFixed(2) + 'px,0) scale(1.03)';
     requestAnimationFrame(loop);
   }

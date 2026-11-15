@@ -60,7 +60,7 @@
     while (!onObject(pos) && tries++ < 20) pos = pick();
     if (!onObject(pos)) return;
     var s = document.createElement('span');
-    s.className = 'spark' + (Math.random() < 0.8 ? ' dot' : '');
+    s.className = 'spark dot';
     var size = 1.8 + Math.random() * 2.4;            // % av logobredden
     s.style.left = pos[0] + '%';
     s.style.top = pos[1] + '%';

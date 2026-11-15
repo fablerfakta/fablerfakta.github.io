@@ -68,6 +68,7 @@ html, body { height: 100%; }
   }
   .tilt { will-change: transform; position: relative; }
   .layer-logo { display: block; width: 100%; height: auto; }
+  .layer-front { position: absolute; left: 0; top: 0; width: 100%; height: auto; display: block; will-change: transform; }
 }
 
 /* ---------- magiska glimtar runt boken ---------- */
@@ -81,9 +82,16 @@ html, body { height: 100%; }
 }
 .spark.dot {
   clip-path: none; border-radius: 50%;
-  background: radial-gradient(circle, #ffffff 0 14%, rgba(255,225,160,.9) 30%, rgba(255,200,120,0) 70%);
-  width: 1.8% !important;
+  width: 4.4% !important;
+  background: radial-gradient(circle, #fffdf5 0 10%, rgba(255,232,180,.85) 24%, rgba(255,210,140,.35) 46%, rgba(255,200,120,0) 70%);
+  filter: blur(.6px);
 }
+@keyframes wisp {
+  0%   { transform: translate(-50%, -50%) scale(.3); opacity: 0; }
+  45%  { transform: translate(-50%, calc(-50% - 6px)) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, calc(-50% - 14px)) scale(.6); opacity: 0; }
+}
+.spark.dot { animation-name: wisp; animation-timing-function: ease-in-out; }
 @keyframes twinkle {
   0%   { transform: translate(-50%, -50%) scale(0) rotate(var(--rot)); opacity: 0; }
   40%  { transform: translate(-50%, -50%) scale(1) rotate(calc(var(--rot) + 20deg)); opacity: .7; }
