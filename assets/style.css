@@ -82,7 +82,7 @@ html, body { height: 100%; }
 .spark.dot {
   clip-path: none; border-radius: 50%;
   background: radial-gradient(circle, #ffffff 0 14%, rgba(255,225,160,.9) 30%, rgba(255,200,120,0) 70%);
-  width: 1.4% !important;
+  width: 1.8% !important;
 }
 @keyframes twinkle {
   0%   { transform: translate(-50%, -50%) scale(0) rotate(var(--rot)); opacity: 0; }

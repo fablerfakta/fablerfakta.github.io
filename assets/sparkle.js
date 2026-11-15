@@ -26,7 +26,7 @@
       return [59 + Math.cos(a) * 9.5 * r, 43.5 + Math.sin(a) * 11.5 * r];
     }]
   ];
-  places.push([1, function () { return along(78.8, 48.6, 68.6, 62, 1.5); }]);   // pennan
+  places.push([2, function () { return along(79.5, 47.5, 66, 64, 1.2); }]);   // pennan, från spetsen och nedåt
   var total = places.reduce(function (s, p) { return s + p[0]; }, 0);
   function pick() {
     var r = Math.random() * total;
@@ -60,7 +60,7 @@
     while (!onObject(pos) && tries++ < 20) pos = pick();
     if (!onObject(pos)) return;
     var s = document.createElement('span');
-    s.className = 'spark' + (Math.random() < 0.25 ? ' dot' : '');
+    s.className = 'spark' + (Math.random() < 0.8 ? ' dot' : '');
     var size = 1.8 + Math.random() * 2.4;            // % av logobredden
     s.style.left = pos[0] + '%';
     s.style.top = pos[1] + '%';
