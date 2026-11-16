@@ -293,3 +293,18 @@ body { padding-bottom: 96px; }
 .home-apps .app .info { display: contents; }
 .home-apps .app h2 { grid-area: name; font-size: .86rem; line-height: 1.2; margin: 0; }
 .home-apps .app p { grid-area: desc; font-size: .7rem; line-height: 1.36; }
+
+/* länk till integritetspolicyn under Om */
+.policy-link {
+  display: inline-block; margin-top: 22px; font-size: .78rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--muted); text-decoration: none;
+  border-bottom: 1px solid var(--line); padding-bottom: 2px;
+}
+.policy-link:hover { color: var(--gold-hi); }
+/* policysidan */
+.policy .meta { color: var(--muted); font-size: .85rem; margin: 6px 0 0; }
+.policy .meta a, .policy-text a { color: var(--gold); }
+.policy-text { max-width: 680px; margin: 0 auto; padding: 18px 22px 40px; }
+.policy-text h2 { color: var(--gold-hi); font-weight: 500; font-size: 1.1rem; margin: 26px 0 6px; }
+.policy-text p { margin: 0 0 10px; color: var(--text); line-height: 1.7; }
+.policy-text hr { border: 0; border-top: 1px solid var(--line); margin: 40px 0 10px; }
