@@ -166,3 +166,34 @@ body.subpage {
 .toggle-apps[aria-expanded="true"] { color: var(--gold-hi); }
 @media (min-aspect-ratio: 3/4) { .hero { height: calc(100vh - 80px); height: calc(100dvh - 80px); } }
 @media (max-aspect-ratio: 3/4) { .home-apps { scroll-margin-top: 20px; } }
+
+/* ---------- illustrationsgalleri ---------- */
+.gallery-wrap[hidden] { display: none; }
+.gallery-wrap { position: relative; z-index: 3; padding: 32px 14px 40px; }
+@media (max-aspect-ratio: 3/4) { .gallery-wrap { margin-top: -84vw; padding-top: 0; scroll-margin-top: 20px; } }
+.gallery { columns: 2 160px; column-gap: 12px; max-width: 1100px; margin: 0 auto; }
+@media (min-width: 900px) { .gallery { columns: 4; } }
+.art {
+  display: block; break-inside: avoid; margin: 0 0 12px; border-radius: 10px; overflow: hidden;
+  border: 1px solid var(--line); box-shadow: 0 10px 26px -14px rgba(0,0,0,.8);
+  transition: transform .2s, border-color .2s;
+}
+.art:hover { transform: translateY(-2px); border-color: rgba(214,186,128,.5); }
+.art img { display: block; width: 100%; height: auto; }
+.gallery-wrap.show .art { animation: appIn .5s ease both; }
+.toggle-illu[aria-expanded="true"] { color: var(--gold-hi); }
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 50; background: rgba(10,8,22,.94);
+  display: flex; align-items: center; justify-content: center; padding: 4vh 4vw;
+}
+.lightbox[hidden] { display: none; }
+.lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; box-shadow: 0 20px 60px rgba(0,0,0,.7); }
+.lightbox button {
+  position: absolute; background: none; border: 0; color: var(--gold-hi); cursor: pointer;
+  font: 300 2.6rem/1 "Poppins", sans-serif; padding: 10px 16px; opacity: .85;
+}
+.lightbox button:hover { opacity: 1; }
+.lb-close { top: 8px; right: 10px; }
+.lb-prev { left: 4px; top: 50%; transform: translateY(-50%); }
+.lb-next { right: 4px; top: 50%; transform: translateY(-50%); }
