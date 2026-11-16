@@ -359,3 +359,10 @@ html, body, a, button, .hero { -webkit-tap-highlight-color: transparent; }
   transition: opacity .25s ease;
 }
 .art:hover::after, .art:focus-visible::after, .art:active::after { opacity: 0; }
+
+/* mjukare, mindre mättat guldsken vid tryck */
+@keyframes goldGlow {
+  0%   { filter: drop-shadow(0 0 0 rgba(235,215,170,0)); }
+  30%  { filter: drop-shadow(0 0 10px rgba(235,215,170,.7)) drop-shadow(0 0 26px rgba(220,195,150,.45)); }
+  100% { filter: drop-shadow(0 0 0 rgba(235,215,170,0)); }
+}
