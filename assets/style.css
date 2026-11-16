@@ -245,3 +245,14 @@ body { padding-bottom: 80px; }
 .bottomnav.static { transform: translateZ(0); -webkit-transform: translateZ(0); }
 /* Om-texten i samma guld som kontaktknapparna */
 .about p { color: var(--gold-hi); }
+
+/* små fyrkantiga miniatyrer så att alla får plats på en skärm */
+.gallery {
+  columns: auto; display: grid; gap: 6px;
+  grid-template-columns: repeat(6, 1fr); max-width: 760px;
+}
+@media (min-width: 700px) { .gallery { grid-template-columns: repeat(9, 1fr); gap: 8px; } }
+.art { margin: 0; border-radius: 6px; aspect-ratio: 1; }
+.art picture, .art img { width: 100%; height: 100%; }
+.art img { object-fit: cover; }
+.gallery-wrap { padding-bottom: 20px; }
