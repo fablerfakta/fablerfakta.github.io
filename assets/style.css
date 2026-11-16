@@ -241,3 +241,5 @@ body.subpage {
   background: linear-gradient(to bottom, rgba(26,18,48,0), rgba(26,18,48,.92) 45%);
 }
 body { padding-bottom: 80px; }
+/* stabil fast meny även när webbläsarens adressfält döljs/visas */
+.bottomnav.static { transform: translateZ(0); -webkit-transform: translateZ(0); }
