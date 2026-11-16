@@ -15,7 +15,7 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" as="image" href="assets/img/hero-mobil-720.jpg" media="(max-aspect-ratio: 3/4)">
   <link rel="preload" as="image" href="assets/img/hero-1920.jpg?v=3" media="(min-aspect-ratio: 3/4)">
-  <link rel="stylesheet" href="assets/style.css?v=18">
+  <link rel="stylesheet" href="assets/style.css?v=20">
 </head>
 <body>
 
@@ -47,13 +47,53 @@
         </picture>
       </div>
     </div>
-    <nav class="bottomnav" aria-label="Meny">
-      <a href="#">Appar</a>
-      <a href="#">Illustration</a>
-      <a href="#">Om</a>
-      <a href="#">Kontakt</a>
-    </nav>
   </header>
+
+  <main id="appar" class="apps home-apps">
+    <a class="app" href="https://cajsag73.github.io/" rel="noopener">
+      <picture>
+        <source type="image/webp" srcset="assets/img/appar/bad-line.webp">
+        <img src="assets/img/appar/bad-line.png" alt="" width="96" height="96">
+      </picture>
+      <div class="info">
+        <h2>Bad Line</h2>
+        <p>Soundboard för samtal du inte vill ha. Spela brus och dålig täckning i bakgrunden – och smit ur samtalet.</p>
+      </div>
+      <span class="go" aria-hidden="true">→</span>
+    </a>
+
+    <a class="app" href="https://syntraceapp.github.io/SynTrace/app/" rel="noopener">
+      <picture>
+        <source type="image/webp" srcset="assets/img/appar/syntrace.webp">
+        <img src="assets/img/appar/syntrace.png" alt="" width="96" height="96">
+      </picture>
+      <div class="info">
+        <h2>SynTrace</h2>
+        <p>Upptäck hur dina sinnen kan vara sammankopplade. Tester för synestesi – svaren sparas bara i din egen enhet.</p>
+      </div>
+      <span class="go" aria-hidden="true">→</span>
+    </a>
+
+    <a class="app" href="https://fablerfakta.github.io/frontlinje-goteborg/" rel="noopener">
+      <picture>
+        <source type="image/webp" srcset="assets/img/appar/frontlinje-goteborg.webp">
+        <img src="assets/img/appar/frontlinje-goteborg.png" alt="" width="96" height="96">
+      </picture>
+      <div class="info">
+        <h2>Frontlinje: Göteborg</h2>
+        <p>Ett skjutspel i webbläsaren där du försvarar det vackraste vi har: GAIS och Glenn Hysén.</p>
+      </div>
+      <span class="go" aria-hidden="true">→</span>
+    </a>
+
+  </main>
+
+  <nav class="bottomnav static" aria-label="Meny">
+    <a href="#appar">Appar</a>
+    <a href="#">Illustration</a>
+    <a href="#">Om</a>
+    <a href="#">Kontakt</a>
+  </nav>
 
   <script src="assets/earth.js?v=3" defer></script>
   <script src="assets/sparkle.js?v=11" defer></script>
