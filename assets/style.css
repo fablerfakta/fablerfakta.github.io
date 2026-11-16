@@ -197,3 +197,47 @@ body.subpage {
 .lb-close { top: 8px; right: 10px; }
 .lb-prev { left: 4px; top: 50%; transform: translateY(-50%); }
 .lb-next { right: 4px; top: 50%; transform: translateY(-50%); }
+
+/* ---------- Om ---------- */
+.about[hidden] { display: none; }
+.about { position: relative; z-index: 3; max-width: 640px; margin: 0 auto; padding: 36px 22px 48px; text-align: center; }
+.about p { margin: 0; color: var(--text); font-size: clamp(1.02rem, 2.6vw, 1.2rem); line-height: 1.7; }
+@media (max-aspect-ratio: 3/4) { .about { margin-top: -84vw; padding-top: 0; scroll-margin-top: 20px; } }
+.about.show p { animation: appIn .5s ease both; }
+.toggle-om[aria-expanded="true"] { color: var(--gold-hi); }
+
+/* ---------- Kontakt ---------- */
+.contact { display: grid; gap: 14px; justify-items: center; }
+.contact[hidden] { display: none; }
+.contact-row {
+  display: inline-flex; align-items: center; gap: 12px; text-decoration: none;
+  color: var(--gold-hi); font-size: clamp(1rem, 2.6vw, 1.15rem);
+  padding: 12px 22px; border-radius: 999px; border: 1px solid var(--line);
+  background: rgba(42,34,80,.55); transition: border-color .2s, transform .2s;
+}
+.contact-row:hover { border-color: rgba(214,186,128,.5); transform: translateY(-1px); }
+.contact-row svg { width: 22px; height: 22px; flex: none; }
+.contact.show .contact-row { animation: appIn .45s ease both; }
+.contact.show .contact-row:nth-child(2) { animation-delay: .08s; }
+.toggle-kontakt[aria-expanded="true"] { color: var(--gold-hi); }
+
+/* menyn ska alltid gå att trycka på, även när en kort sektion (Om/Kontakt) är öppen */
+.stage { pointer-events: none; }
+.bottomnav.static { position: relative; z-index: 6; }
+@media (max-aspect-ratio: 3/4) {
+  /* på mobilen ligger menyn alltid längst ner på skärmen */
+  .bottomnav.static {
+    position: fixed; left: 0; right: 0; bottom: 0; border-top: 0;
+    padding: 26px 10px calc(18px + env(safe-area-inset-bottom));
+    background: linear-gradient(to bottom, rgba(26,18,48,0), rgba(26,18,48,.92) 45%);
+  }
+  body { padding-bottom: 80px; }
+}
+
+/* menyn ligger alltid fast längst ner på skärmen, även på dator */
+.bottomnav.static {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; border-top: 0;
+  padding: 26px 10px calc(18px + env(safe-area-inset-bottom));
+  background: linear-gradient(to bottom, rgba(26,18,48,0), rgba(26,18,48,.92) 45%);
+}
+body { padding-bottom: 80px; }
