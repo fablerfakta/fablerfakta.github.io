@@ -17,8 +17,12 @@
     lastG = e.gamma; lastB = e.beta;
     if (!base) base = { b: e.beta, g: e.gamma };
     var g = Math.max(-25, Math.min(25, e.gamma - base.g)) / 25;
-    var b = Math.max(-25, Math.min(25, e.beta - base.b)) / 25;
-    tx = g * MAX; ty = b * MAX * 1.3;
+    // framåt/bakåt-lutning: känsligare (±15°) och lika stort utslag som i sidled
+    var b = Math.max(-15, Math.min(15, e.beta - base.b)) / 15;
+    tx = g * MAX; ty = b * MAX;
+    // nollpunkten följer långsamt med, så att det alltid finns rörelse kvar åt båda håll
+    base.b += (e.beta - base.b) * 0.004;
+    base.g += (e.gamma - base.g) * 0.004;
   }
 
   function loop() {
