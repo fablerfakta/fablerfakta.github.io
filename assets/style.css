@@ -347,3 +347,15 @@ html, body, a, button, .hero { -webkit-tap-highlight-color: transparent; }
 /* nedtonade miniatyrer – lyser upp vid tryck/hovring */
 .art img { filter: brightness(.72) saturate(.75); transition: filter .25s ease; }
 .art:hover img, .art:focus-visible img, .art:active img { filter: none; }
+
+/* mörkt glas över miniatyrerna */
+.art { position: relative; }
+.art img { filter: brightness(.55) saturate(.6); }
+.art::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+  background: linear-gradient(160deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 35%),
+              rgba(18,12,36,.35);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.06);
+  transition: opacity .25s ease;
+}
+.art:hover::after, .art:focus-visible::after, .art:active::after { opacity: 0; }
