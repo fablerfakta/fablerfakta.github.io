@@ -256,3 +256,17 @@ body { padding-bottom: 80px; }
 .art picture, .art img { width: 100%; height: 100%; }
 .art img { object-fit: cover; }
 .gallery-wrap { padding-bottom: 20px; }
+
+/* Menyn står på samma höjd hela tiden: räknat från skärmens överkant mot den
+   minsta synliga ytan (när webbläsarens fält visas). Då hoppar den inte när
+   fälten göms eller visas – ytan under fylls bara ut med samma bakgrund. */
+.bottomnav.static {
+  top: calc(100svh - 72px - env(safe-area-inset-bottom)); bottom: 0;
+  align-items: flex-start; align-content: flex-start;
+  padding: 24px 10px 0;
+  background: linear-gradient(to bottom, rgba(26,18,48,0), rgba(26,18,48,.92) 26px, rgba(26,18,48,.96));
+}
+@supports not (height: 100svh) {
+  .bottomnav.static { top: auto; padding-bottom: calc(18px + env(safe-area-inset-bottom)); }
+}
+body { padding-bottom: 96px; }
