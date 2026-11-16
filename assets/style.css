@@ -311,3 +311,21 @@ body { padding-bottom: 96px; }
 
 /* upphovsrätt */
 .about p.copyright, .policy-text p.copyright { margin-top: 14px; font-size: .7rem; line-height: 1.5; color: var(--muted); letter-spacing: .02em; }
+
+/* ---------- Startsidan som "app": bara innehållet scrollar, menyn står still ---------- */
+html:has(body.app-shell) { height: 100%; overflow: hidden; }
+body.app-shell {
+  height: 100vh; height: 100svh; overflow: hidden; padding-bottom: 0;
+  display: flex; flex-direction: column;
+}
+body.app-shell .scroller {
+  flex: 1 1 auto; min-height: 0; overflow-y: auto; overflow-x: hidden;
+  -webkit-overflow-scrolling: touch; overscroll-behavior: contain; scroll-behavior: smooth;
+}
+body.app-shell .bottomnav.static {
+  position: relative; top: auto; bottom: auto; left: auto; right: auto; transform: none;
+  flex: 0 0 auto; height: auto; align-items: center;
+  padding: 18px 10px calc(30px + env(safe-area-inset-bottom));
+  background: #1a1230; box-shadow: 0 -18px 22px -4px #1a1230;
+}
+body.app-shell .stage { width: 100%; }

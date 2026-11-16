@@ -15,9 +15,10 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" as="image" href="assets/img/hero-mobil-720.jpg" media="(max-aspect-ratio: 3/4)">
   <link rel="preload" as="image" href="assets/img/hero-1920.jpg?v=3" media="(min-aspect-ratio: 3/4)">
-  <link rel="stylesheet" href="assets/style.css?v=35">
+  <link rel="stylesheet" href="assets/style.css?v=36">
 </head>
-<body>
+<body class="app-shell">
+<div class="scroller">
 
   <header id="top" class="hero">
     <picture>
@@ -147,6 +148,8 @@
   </section>
 
   <div class="lightbox" hidden><img alt=""><button class="lb-close" aria-label="Stäng">×</button><button class="lb-prev" aria-label="Föregående">‹</button><button class="lb-next" aria-label="Nästa">›</button></div>
+
+</div><!-- /scroller -->
 
   <nav class="bottomnav static" aria-label="Meny">
     <a href="#appar" class="toggle-apps" aria-controls="appar" aria-expanded="false">Appar</a>
