@@ -243,3 +243,5 @@ body.subpage {
 body { padding-bottom: 80px; }
 /* stabil fast meny även när webbläsarens adressfält döljs/visas */
 .bottomnav.static { transform: translateZ(0); -webkit-transform: translateZ(0); }
+/* Om-texten i samma guld som kontaktknapparna */
+.about p { color: var(--gold-hi); }
