@@ -155,3 +155,14 @@ body.subpage {
   .home-apps { margin-top: -84vw; position: relative; z-index: 3; padding-top: 0; }
   .app { background: linear-gradient(160deg, rgba(42,34,80,.62), rgba(26,21,52,.72)); backdrop-filter: blur(3px); }
 }
+
+/* apparna fälls ut när man trycker på APPAR */
+.home-apps[hidden] { display: none; }
+.home-apps.show .app { animation: appIn .45s ease both; }
+.home-apps.show .app:nth-child(2) { animation-delay: .07s; }
+.home-apps.show .app:nth-child(3) { animation-delay: .14s; }
+.home-apps.show .app:nth-child(4) { animation-delay: .21s; }
+@keyframes appIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.toggle-apps[aria-expanded="true"] { color: var(--gold-hi); }
+@media (min-aspect-ratio: 3/4) { .hero { height: calc(100vh - 80px); height: calc(100dvh - 80px); } }
+@media (max-aspect-ratio: 3/4) { .home-apps { scroll-margin-top: 20px; } }

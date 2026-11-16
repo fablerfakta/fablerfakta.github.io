@@ -15,7 +15,7 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" as="image" href="assets/img/hero-mobil-720.jpg" media="(max-aspect-ratio: 3/4)">
   <link rel="preload" as="image" href="assets/img/hero-1920.jpg?v=3" media="(min-aspect-ratio: 3/4)">
-  <link rel="stylesheet" href="assets/style.css?v=21">
+  <link rel="stylesheet" href="assets/style.css?v=22">
 </head>
 <body>
 
@@ -49,7 +49,7 @@
     </div>
   </header>
 
-  <main id="appar" class="apps home-apps">
+  <main id="appar" class="apps home-apps" hidden>
     <a class="app" href="https://cajsag73.github.io/" rel="noopener">
       <picture>
         <source type="image/webp" srcset="assets/img/appar/bad-line.webp">
@@ -89,7 +89,7 @@
   </main>
 
   <nav class="bottomnav static" aria-label="Meny">
-    <a href="#appar">Appar</a>
+    <a href="#appar" class="toggle-apps" aria-controls="appar" aria-expanded="false">Appar</a>
     <a href="#">Illustration</a>
     <a href="#">Om</a>
     <a href="#">Kontakt</a>
@@ -97,5 +97,21 @@
 
   <script src="assets/earth.js?v=3" defer></script>
   <script src="assets/sparkle.js?v=11" defer></script>
+  <script>
+    // Apparna visas först när man trycker på APPAR
+    (function () {
+      var btn = document.querySelector('.toggle-apps'), list = document.getElementById('appar');
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var open = list.hidden;
+        list.hidden = !open;
+        btn.setAttribute('aria-expanded', open);
+        if (open) {
+          list.classList.remove('show'); void list.offsetWidth; list.classList.add('show');
+          list.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
