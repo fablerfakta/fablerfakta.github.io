@@ -15,7 +15,7 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" as="image" href="assets/img/hero-mobil-720.jpg" media="(max-aspect-ratio: 3/4)">
   <link rel="preload" as="image" href="assets/img/hero-1920.jpg?v=3" media="(min-aspect-ratio: 3/4)">
-  <link rel="stylesheet" href="assets/style.css?v=37">
+  <link rel="stylesheet" href="assets/style.css?v=38">
 </head>
 <body class="app-shell">
 <div class="scroller">
@@ -185,6 +185,8 @@
       document.querySelector('.hero').addEventListener('click', function (e) {
         if (e.target.closest('a, button')) return;
         closeAll();
+        var f = document.querySelector('.float');
+        if (f) { f.classList.remove('glow'); void f.offsetWidth; f.classList.add('glow'); }
       });
 
       // stor bild när man trycker på en illustration
