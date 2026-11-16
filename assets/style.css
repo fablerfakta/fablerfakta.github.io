@@ -308,3 +308,6 @@ body { padding-bottom: 96px; }
 .policy-text h2 { color: var(--gold-hi); font-weight: 500; font-size: 1.1rem; margin: 26px 0 6px; }
 .policy-text p { margin: 0 0 10px; color: var(--text); line-height: 1.7; }
 .policy-text hr { border: 0; border-top: 1px solid var(--line); margin: 40px 0 10px; }
+
+/* upphovsrätt */
+.about p.copyright, .policy-text p.copyright { margin-top: 14px; font-size: .7rem; line-height: 1.5; color: var(--muted); letter-spacing: .02em; }
