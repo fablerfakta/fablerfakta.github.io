@@ -152,6 +152,6 @@ body.subpage {
   .stage { position: relative; left: 0; transform: none; width: 100vw; height: auto; }
   body { background: #1a1230; overflow-x: hidden; }
   .stage { width: 100%; }
-  .home-apps { margin-top: -54vw; position: relative; z-index: 3; padding-top: 0; }
+  .home-apps { margin-top: -84vw; position: relative; z-index: 3; padding-top: 0; }
   .app { background: linear-gradient(160deg, rgba(42,34,80,.62), rgba(26,21,52,.72)); backdrop-filter: blur(3px); }
 }
