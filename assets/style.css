@@ -329,3 +329,6 @@ body.app-shell .bottomnav.static {
   background: #1a1230; box-shadow: 0 -18px 22px -4px #1a1230;
 }
 body.app-shell .stage { width: 100%; }
+
+/* bilden går att trycka på (stänger öppna sektioner) */
+.hero { cursor: pointer; }

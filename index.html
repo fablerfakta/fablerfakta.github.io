@@ -15,7 +15,7 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" as="image" href="assets/img/hero-mobil-720.jpg" media="(max-aspect-ratio: 3/4)">
   <link rel="preload" as="image" href="assets/img/hero-1920.jpg?v=3" media="(min-aspect-ratio: 3/4)">
-  <link rel="stylesheet" href="assets/style.css?v=36">
+  <link rel="stylesheet" href="assets/style.css?v=37">
 </head>
 <body class="app-shell">
 <div class="scroller">
@@ -171,6 +171,20 @@
             box.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         });
+      });
+
+      // tryck på bilden/logon för att stänga det som är öppet
+      function closeAll() {
+        pairs.forEach(function (q) {
+          document.getElementById(q[1]).hidden = true;
+          document.querySelector(q[0]).setAttribute('aria-expanded', 'false');
+        });
+        var sc = document.querySelector('.scroller');
+        if (sc) sc.scrollTo({ top: 0, behavior: 'smooth' }); else window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      document.querySelector('.hero').addEventListener('click', function (e) {
+        if (e.target.closest('a, button')) return;
+        closeAll();
       });
 
       // stor bild när man trycker på en illustration
