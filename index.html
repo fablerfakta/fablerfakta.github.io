@@ -168,7 +168,7 @@
           if (open) {
             box.hidden = false; btn.setAttribute('aria-expanded', 'true');
             box.classList.remove('show'); void box.offsetWidth; box.classList.add('show');
-            box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // ingen scroll: bakgrunden ska ligga still
           }
         });
       });
