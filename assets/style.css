@@ -419,3 +419,10 @@ html, body, a, button, .hero { -webkit-tap-highlight-color: transparent; }
 .glow-pic .layer-glow { position: static; width: 100%; height: auto; }
 .tilt > picture:not(.glow-pic) { position: relative; z-index: 1; display: block; }
 .tilt > .glow-pic { width: 110.395% !important; max-width: none; }
+
+/* miniatyrerna: lite ljusare och tydligare under det mörka glaset */
+.art img { filter: brightness(.72) saturate(.8) contrast(1.05); }
+.art::after {
+  background: linear-gradient(160deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 35%),
+              rgba(18,12,36,.2);
+}
