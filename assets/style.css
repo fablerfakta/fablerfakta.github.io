@@ -426,3 +426,10 @@ html, body, a, button, .hero { -webkit-tap-highlight-color: transparent; }
   background: linear-gradient(160deg, rgba(255,255,255,.10) 0%, rgba(255,255,255,0) 35%),
               rgba(18,12,36,.2);
 }
+
+/* ännu tydligare miniatyrer */
+.art img { filter: brightness(.86) saturate(.9) contrast(1.06); }
+.art::after {
+  background: linear-gradient(160deg, rgba(255,255,255,.09) 0%, rgba(255,255,255,0) 35%),
+              rgba(18,12,36,.1);
+}
