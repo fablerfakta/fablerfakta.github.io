@@ -407,3 +407,15 @@ html, body, a, button, .hero { -webkit-tap-highlight-color: transparent; }
 .text-glow {
   background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255,216,155,.44), rgba(248,198,130,.17) 55%, rgba(248,198,130,0) 75%);
 }
+
+/* skenet vid tryck: en färdig mjuk glöd bakom logon (inga pixliga kanter) */
+.float.glow .layer-logo { animation: none; filter: none; }
+.layer-glow { position: absolute; left: 0; top: 0; width: 100%; height: auto; display: block; opacity: 0; pointer-events: none; mix-blend-mode: screen; }
+.float.glow .layer-glow { animation: textGlow 1.1s ease-out; }
+
+/* glöden ligger bakom logon och är lite större än den, så att den inte klipps */
+.tilt { position: relative; }
+.glow-pic { position: absolute; left: -5.198%; top: -6.002%; width: 110.395%; z-index: 0; pointer-events: none; }
+.glow-pic .layer-glow { position: static; width: 100%; height: auto; }
+.tilt > picture:not(.glow-pic) { position: relative; z-index: 1; display: block; }
+.tilt > .glow-pic { width: 110.395% !important; max-width: none; }
