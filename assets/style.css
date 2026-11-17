@@ -433,3 +433,6 @@ html, body, a, button, .hero { -webkit-tap-highlight-color: transparent; }
   background: linear-gradient(160deg, rgba(255,255,255,.09) 0%, rgba(255,255,255,0) 35%),
               rgba(18,12,36,.1);
 }
+
+/* bredare sken runt bilden vid tryck */
+.tilt > .glow-pic { left: -10.395%; top: -12.005%; width: 120.790% !important; }
