@@ -397,3 +397,13 @@ html, body, a, button, .hero { -webkit-tap-highlight-color: transparent; }
 .text-glow {
   background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(252,226,178,.42), rgba(245,212,160,.16) 55%, rgba(245,212,160,0) 75%);
 }
+
+/* ännu lite varmare sken vid tryck */
+@keyframes goldGlow {
+  0%   { filter: drop-shadow(0 0 0 rgba(250,210,150,0)); }
+  30%  { filter: drop-shadow(0 0 6px rgba(255,216,155,.78)) drop-shadow(0 0 14px rgba(248,198,130,.48)); }
+  100% { filter: drop-shadow(0 0 0 rgba(250,210,150,0)); }
+}
+.text-glow {
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255,216,155,.44), rgba(248,198,130,.17) 55%, rgba(248,198,130,0) 75%);
+}
