@@ -58,5 +58,5 @@
     draw();
     if (!still) setInterval(draw, 60);   // ca 16 bilder/s, oberoende av andra animationer
   };
-  img.src = 'assets/img/jord.png?v=4';
+  img.src = 'assets/img/jord.png?v=5';
 })();
