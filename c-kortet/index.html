@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C-kortet har flyttat</title>
+<meta http-equiv="refresh" content="0; url=https://fablerfakta.github.io/C-kortet/">
+<link rel="canonical" href="https://fablerfakta.github.io/C-kortet/">
+<style>body{background:#14181c;color:#e9e4f5;font:16px/1.6 system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;margin:0;text-align:center}a{color:#f0d9a4}</style>
+</head>
+<body>
+<p>C-kortet har flyttat.<br><a href="https://fablerfakta.github.io/C-kortet/">Öppna C-kortet här</a></p>
+<script>
+  // ta bort den gamla appens service worker så att den inte visar en gammal version
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(function (rs) {
+      rs.forEach(function (r) { if (r.scope.indexOf('/c-kortet/') > -1) r.unregister(); });
+    });
+  }
+  location.replace('https://fablerfakta.github.io/C-kortet/');
+</script>
+</body>
+</html>
