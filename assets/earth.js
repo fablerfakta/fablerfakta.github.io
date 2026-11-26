@@ -5,7 +5,7 @@
   var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   var N = 420;                       // intern upplösning (skalas upp med CSS)
-  var REV_SECONDS = 100;             // ett varv på en minut och fyrtio sekunder
+  var REV_SECONDS = 70;              // ett varv på en minut och tio sekunder
   cv.width = N; cv.height = N;
   var ctx = cv.getContext('2d');
   var out = ctx.createImageData(N, N);
