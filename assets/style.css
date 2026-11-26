@@ -445,4 +445,4 @@ html, body, a, button, .hero { -webkit-tap-highlight-color: transparent; }
 
 /* Installera som app (OM) */
 .install-btn{display:block;margin:18px auto 6px}
-.install-hint{font-size:.9rem;opacity:.9;text-align:center;margin:6px auto 10px;max-width:30em}
+.about .install-hint{font-size:.85rem;line-height:1.45;opacity:.9;text-align:center;margin:6px auto 10px;max-width:30em}
