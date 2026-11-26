@@ -130,8 +130,7 @@
 
   <section id="om" class="about" hidden>
     <p>Fabler &amp; Fakta Studio är en liten oberoende studio i Västsverige som gör appar, illustration, design och animation.</p>
-    <button class="lang-btn install-btn" id="installBtn" type="button">Installera som app</button>
-    <p class="install-hint" id="installHint" hidden></p>
+    <button class="lang-btn install-btn" id="installBtn" type="button" hidden>Installera som app</button>
     <a class="policy-link" href="integritet.html">Integritetspolicy</a>
     <p class="copyright">© 2026 Fabler &amp; Fakta Studio. Alla rättigheter förbehållna. Bilder och texter får inte användas utan tillstånd.</p>
   </section>
@@ -222,30 +221,19 @@
   </script>
   <script>
   (function () {
-    var b = document.getElementById('installBtn'), hint = document.getElementById('installHint'), ev = null;
-    var installerad = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
-    if (installerad) { b.hidden = true; return; }
-    window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); ev = e; });
-    window.addEventListener('appinstalled', function () { b.hidden = true; hint.hidden = true; });
+    // Knappen visas bara när webbläsaren faktiskt kan installera sidan
+    var b = document.getElementById('installBtn'), ev = null;
+    window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); ev = e; b.hidden = false; });
+    window.addEventListener('appinstalled', function () { b.hidden = true; });
     b.addEventListener('click', function (e) {
       e.stopPropagation();
-      visaHjalp();
-      if (ev) {
-        var e2 = ev; ev = null;
-        try {
-          var pr = e2.prompt();
-          if (pr && pr.catch) pr.catch(function () {});
-          e2.userChoice.then(function (r) { if (r.outcome === 'accepted') { b.hidden = true; hint.hidden = true; } }, function () {});
-        } catch (err) {}
-      }
+      if (!ev) return;
+      var e2 = ev; ev = null;
+      try {
+        var pr = e2.prompt(); if (pr && pr.catch) pr.catch(function () {});
+        e2.userChoice.then(function (r) { if (r.outcome === 'accepted') b.hidden = true; else ev = e2; }, function () {});
+      } catch (err) {}
     });
-    function visaHjalp() {
-      var ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
-      hint.textContent = ios
-        ? 'Tryck på Dela-knappen i Safari och välj ”Lägg till på hemskärmen”.'
-        : 'Öppna webbläsarens meny (⋮) och välj ”Installera app” eller ”Lägg till på startskärmen”.';
-      hint.hidden = false;
-    }
     if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function () {});
   })();
   </script>
