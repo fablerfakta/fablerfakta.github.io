@@ -1,9 +1,9 @@
 {
   "name": "Fabler & Fakta Studio",
   "short_name": "Fabler & Fakta",
-  "start_url": "./",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#13102a",
+  "background_color": "#34165c",
   "theme_color": "#13102a",
   "icons": [
     {
@@ -18,5 +18,7 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ]
+  ],
+  "id": "/",
+  "scope": "/"
 }
