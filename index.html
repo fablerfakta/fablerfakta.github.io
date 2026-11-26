@@ -229,14 +229,15 @@
     window.addEventListener('appinstalled', function () { b.hidden = true; hint.hidden = true; });
     b.addEventListener('click', function (e) {
       e.stopPropagation();
-      if (ev) {
-        try {
-          ev.prompt();
-          ev.userChoice.then(function (r) { ev = null; if (r.outcome !== 'accepted') visaHjalp(); });
-          return;
-        } catch (err) { ev = null; }
-      }
       visaHjalp();
+      if (ev) {
+        var e2 = ev; ev = null;
+        try {
+          var pr = e2.prompt();
+          if (pr && pr.catch) pr.catch(function () {});
+          e2.userChoice.then(function (r) { if (r.outcome === 'accepted') { b.hidden = true; hint.hidden = true; } }, function () {});
+        } catch (err) {}
+      }
     });
     function visaHjalp() {
       var ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
