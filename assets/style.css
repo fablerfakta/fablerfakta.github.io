@@ -442,3 +442,7 @@ html, body, a, button, .hero { -webkit-tap-highlight-color: transparent; }
   border:1px solid rgba(240,200,120,.55);background:rgba(240,200,120,.1);color:var(--gold-hi,#f3d79a);
   font:inherit;font-size:.95rem;letter-spacing:.06em;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .lang-btn:active{background:rgba(240,200,120,.25);box-shadow:0 0 14px rgba(240,200,120,.45)}
+
+/* Installera som app (OM) */
+.install-btn{display:block;margin:18px auto 6px}
+.install-hint{font-size:.9rem;opacity:.9;text-align:center;margin:6px auto 10px;max-width:30em}

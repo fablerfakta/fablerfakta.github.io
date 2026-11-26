@@ -16,7 +16,7 @@
   <link rel="apple-touch-icon" href="assets/img/lampa-apple-touch-icon.png">
   <link rel="preload" as="image" href="assets/img/hero-mobil-720.jpg" media="(max-aspect-ratio: 3/4)">
   <link rel="preload" as="image" href="assets/img/hero-1920.jpg?v=3" media="(min-aspect-ratio: 3/4)">
-  <link rel="stylesheet" href="assets/style.css?v=52">
+  <link rel="stylesheet" href="assets/style.css?v=53">
 </head>
 <body class="app-shell">
 <div class="scroller">
@@ -130,6 +130,8 @@
 
   <section id="om" class="about" hidden>
     <p>Fabler &amp; Fakta Studio är en liten oberoende studio i Västsverige som gör appar, illustration, design och animation.</p>
+    <button class="lang-btn install-btn" id="installBtn" type="button">Installera som app</button>
+    <p class="install-hint" id="installHint" hidden></p>
     <a class="policy-link" href="integritet.html">Integritetspolicy</a>
     <p class="copyright">© 2026 Fabler &amp; Fakta Studio. Alla rättigheter förbehållna. Bilder och texter får inte användas utan tillstånd.</p>
   </section>
@@ -217,6 +219,25 @@
         if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1));
       });
     })();
+  </script>
+  <script>
+  (function () {
+    var b = document.getElementById('installBtn'), hint = document.getElementById('installHint'), ev = null;
+    var installerad = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+    if (installerad) { b.hidden = true; return; }
+    window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); ev = e; });
+    window.addEventListener('appinstalled', function () { b.hidden = true; hint.hidden = true; });
+    b.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (ev) { ev.prompt(); ev.userChoice.then(function () { ev = null; }); return; }
+      var ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+      hint.textContent = ios
+        ? 'Tryck på Dela-knappen i Safari och välj ”Lägg till på hemskärmen”.'
+        : 'Öppna webbläsarens meny (⋮) och välj ”Installera app” eller ”Lägg till på startskärmen”.';
+      hint.hidden = false;
+    });
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function () {});
+  })();
   </script>
   <script src="assets/tilt.js?v=10" defer></script>
 </body>
