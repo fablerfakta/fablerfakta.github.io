@@ -3,7 +3,7 @@
   "short_name": "Fabler & Fakta",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#2a1c38",
+  "background_color": "#16131a",
   "theme_color": "#13102a",
   "icons": [
     {
