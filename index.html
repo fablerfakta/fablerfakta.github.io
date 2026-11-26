@@ -229,13 +229,22 @@
     window.addEventListener('appinstalled', function () { b.hidden = true; hint.hidden = true; });
     b.addEventListener('click', function (e) {
       e.stopPropagation();
-      if (ev) { ev.prompt(); ev.userChoice.then(function () { ev = null; }); return; }
+      if (ev) {
+        try {
+          ev.prompt();
+          ev.userChoice.then(function (r) { ev = null; if (r.outcome !== 'accepted') visaHjalp(); });
+          return;
+        } catch (err) { ev = null; }
+      }
+      visaHjalp();
+    });
+    function visaHjalp() {
       var ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
       hint.textContent = ios
         ? 'Tryck på Dela-knappen i Safari och välj ”Lägg till på hemskärmen”.'
         : 'Öppna webbläsarens meny (⋮) och välj ”Installera app” eller ”Lägg till på startskärmen”.';
       hint.hidden = false;
-    });
+    }
     if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function () {});
   })();
   </script>
